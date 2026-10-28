@@ -1,0 +1,38 @@
+{
+  "lang": "auto",
+  "theme": "wood",
+  "zoom": 80,
+  "fontSize": 12,
+  "showCoordinateLabels": true,
+  "showLastMove": true,
+  "showNextMove": true,
+  "showOtherVariations": true,
+  "showTurnBorder": true,
+  "autoJump": "auto",
+  "enableSpeech": true,
+  "showMovelist": true,
+  "boardMarginTop": 20,
+  "boardMarginBottom": 20,
+  "viewOnly": false,
+  "rotated": false,
+  "treeBlockNames": [
+    "xiangqi",
+    "xq"
+  ],
+  "fenBlockNames": [
+    "fen"
+  ],
+  "fenSaveBlockName": "xiangqi",
+  "enableFileHost": true,
+  "pgnFileExtensions": [
+    "pgn"
+  ],
+  "engineDepth": 18,
+  "engineSkillLevel": 20,
+  "showEngineBestMove": true,
+  "showEnginePonder": true,
+  "showEngineAnnotations": true,
+  "showBoardAnnotations": true,
+  "saveEvalByDefault": false,
+  "saveEvalPrompt": true
+}
