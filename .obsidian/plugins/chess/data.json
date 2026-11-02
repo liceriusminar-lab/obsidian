@@ -1,0 +1,38 @@
+{
+  "difficulty": 10,
+  "playerColor": "w",
+  "boardOrientation": "player",
+  "soundEnabled": true,
+  "soundVolume": 55,
+  "timeControlMinutes": 10,
+  "incrementSeconds": 0,
+  "showMoveArrow": true,
+  "adaptiveDifficulty": false,
+  "adaptiveThreshold": 3,
+  "resultStreak": 0,
+  "levelStats": {
+    "5": {
+      "wins": 1,
+      "losses": 0,
+      "draws": 0
+    },
+    "10": {
+      "wins": 1,
+      "losses": 3,
+      "draws": 1
+    }
+  },
+  "savedGame": {
+    "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "sanHistory": [],
+    "playerColor": "w",
+    "difficulty": 10,
+    "resigned": false,
+    "clockMs": 600000,
+    "incrementMs": 0,
+    "humanTimeMs": 600000,
+    "timedOut": false,
+    "resultApplied": null,
+    "statsRecorded": null
+  }
+}
