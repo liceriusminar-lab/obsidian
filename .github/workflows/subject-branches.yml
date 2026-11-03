@@ -1,0 +1,42 @@
+# После каждого пуша в main раскладывает папки предметов по отдельным веткам:
+# в ветке «05.01» лежит только 05.01/ (+ .obsidian и .gitignore). Пробелы в имени папки -> дефис.
+name: Ветки предметов
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: subject-branches
+
+jobs:
+  split:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Обновить ветки
+        env:
+          SKIP: практические
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git ls-tree -d -z --name-only HEAD | while IFS= read -r -d '' folder; do
+            case "$folder" in .*|"$SKIP") continue ;; esac
+            branch=${folder// /-}
+            tree=$({ git ls-tree -z HEAD -- .gitignore .obsidian; git ls-tree -z HEAD -- "$folder"; } | git mktree -z)
+            parent=$(git rev-parse -q --verify "refs/remotes/origin/$branch" || true)
+            if [ -n "$parent" ] && [ "$(git rev-parse "$parent^{tree}")" = "$tree" ]; then
+              echo "$branch: без изменений"
+              continue
+            fi
+            commit=$(git commit-tree "$tree" ${parent:+-p "$parent"} -m "$folder: обновление из main ${GITHUB_SHA::7}")
+            git push -q origin "$commit:refs/heads/$branch"
+            echo "$branch: обновлена"
+          done
